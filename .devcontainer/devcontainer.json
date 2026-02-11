@@ -1,6 +1,8 @@
 {
   "name": "MariaDB Training",
   "image": "mcr.microsoft.com/devcontainers/php:8.2",
+  "overrideCommand": false,
+  "remoteUser": "vscode",
   "forwardPorts": [3306, 8080],
   "postCreateCommand": "bash .devcontainer/setup.sh"
 }
