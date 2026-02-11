@@ -31,8 +31,17 @@ EOF
 log "Creating training database..."
 mysql -u root -proot -e "CREATE DATABASE IF NOT EXISTS training;" >> $LOGFILE 2>&1
 
-log "Installing PHP extensions..."
-sudo apt-get install -y wget unzip php-mbstring php-zip php-gd php-json php-curl >> $LOGFILE 2>&1
+log "Installing PHP extensions (Debian Trixie)..."
+sudo apt-get install -y \
+  php8.4-mbstring \
+  php8.4-zip \
+  php8.4-gd \
+  php8.4-curl \
+  php8.4-mysql \
+  php8.4-xml \
+  php8.4-intl \
+  php8.4-common \
+  php8.4-cli >> $LOGFILE 2>&1
 
 log "Downloading phpMyAdmin..."
 wget -q https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.zip -O /tmp/pma.zip
