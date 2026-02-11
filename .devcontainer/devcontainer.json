@@ -1,0 +1,9 @@
+{
+  "name": "MariaDB Training",
+  "image": "mcr.microsoft.com/devcontainers/docker-in-docker:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [3306, 8080],
+  "postCreateCommand": "bash .devcontainer/setup.sh"
+}
