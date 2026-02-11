@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -e
 
-LOGFILE=/var/log/codespace-setup.log
-echo "=== Setup started ===" | sudo tee $LOGFILE
+LOGFILE=/tmp/codespace-setup.log
+echo "=== Setup started ===" | tee $LOGFILE
 
 log() {
   echo "$1"
-  echo "$1" | sudo tee -a $LOGFILE
+  echo "$1" >> $LOGFILE
 }
 
 log "Updating package lists..."
