@@ -31,6 +31,13 @@ EOF
 log "Creating training database..."
 mysql -u root -proot -e "CREATE DATABASE IF NOT EXISTS training;" >> $LOGFILE 2>&1
 
+log "Enabling full Debian Trixie repositories for PHP..."
+echo "deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware" | sudo tee /etc/apt/sources.list.d/trixie-full.list
+echo "deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware" | sudo tee -a /etc/apt/sources.list.d/trixie-full.list
+echo "deb http://deb.debian.org/debian-security trixie-security main contrib non-free non-free-firmware" | sudo tee -a /etc/apt/sources.list.d/trixie-full.list
+
+sudo apt-get update >> $LOGFILE 2>&1
+
 log "Installing PHP extensions (Debian Trixie)..."
 sudo apt-get install -y \
   php8.4-mbstring \
@@ -42,6 +49,7 @@ sudo apt-get install -y \
   php8.4-intl \
   php8.4-common \
   php8.4-cli >> $LOGFILE 2>&1
+
 
 log "Downloading phpMyAdmin..."
 wget -q https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.zip -O /tmp/pma.zip
